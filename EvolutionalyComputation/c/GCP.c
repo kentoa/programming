@@ -9,6 +9,7 @@
 void init_graph(int graph[][N]);
 void CSVWrite(char *output, int graph[][N]);
 int GCPGen(int graph[][N], int link);
+void print_graph(int graph[][N]);
 
 // Graph Coloring Ploblem
 int main(){   
@@ -21,12 +22,13 @@ int main(){
   int linkM = GCPGen(matM, M); // 密結合のリンク数  
   int linkm = GCPGen(matm, m); // 疎結合のリンク数
     
-  CSVWrite("matM.csv", matM);
-  CSVWrite("matm.csv", matm);
+  // CSVWrite("matM.csv", matM);
+  // CSVWrite("matm.csv", matm);
   
   printf("密結合問題を考えたときのリンク数は%dです\n", linkM);
   printf("疎結合問題を考えたときのリンク数は%dです\n", linkm);
- 
+  print_graph(matM);
+
   return 0;
 }
 
@@ -73,7 +75,6 @@ int GCPGen(int graph[][N], int link){ // step2,3: 行列の上三角成分にラ
       count++;
     }
   }
-
   return count;
 }
   
@@ -91,7 +92,14 @@ void CSVWrite(char *fname, int graph[][N]){
     }
     fprintf(fo, "\n");
   }  
-  
   fclose(fo); 
 }
 
+void print_graph(int graph[][N]){
+  for(int i = 0; i < N; i++){
+    for(int j = 0; j < N; j++){
+      printf("%d ", graph[i][j]);
+    }
+    printf("\n");
+  }
+}
