@@ -16,12 +16,23 @@ public class RSAPubKey {
     public BigInteger getN(){
 	return this.n;
     }
+
+    public BigInteger Encrypt(BigInteger m){
+	BigInteger c;
+	c = m.modPow(this.e, this.n); 
+	return c; 
+    }
     
     public static void RSAPubKeyTest(){
-	BigInteger p = BigInteger.valueOf(5), q = BigInteger.valueOf(7), e = BigInteger.valueOf(23);
+	BigInteger p = BigInteger.valueOf(5), q = BigInteger.valueOf(7);
+	BigInteger e = BigInteger.valueOf(2), m = BigInteger.valueOf(3);
 	RSAPubKey pk = new RSAPubKey(p, q, e);
 	
 	System.out.println("(n, e) = " + "(" + pk.getN() + ", " + pk.getE() + ")");
+	
+	BigInteger c = pk.Encrypt(m);
+	
+	System.out.println("c = " + c);
     }
     
     public static void main(String[] args){
