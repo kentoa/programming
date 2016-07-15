@@ -21,26 +21,7 @@ public class RSASecKey {
     }
 
     public BigInteger Decrypt(BigInteger c){
-	BigInteger m;
-	
-	m =  c.modPow(this.d, this.n);
-	
+	BigInteger m =  c.modPow(this.d, this.n);
 	return m;
     }
-
-    public static void RSASecKeyTest(){
-	BigInteger p = BigInteger.valueOf(5), q = BigInteger.valueOf(7);
-	BigInteger e = BigInteger.valueOf(5), c = BigInteger.valueOf(32);
-
-	RSASecKey sk = new RSASecKey(p, q, e); // if e | (p-1)(q-1), error!
-	System.out.println("d = " + sk.getD());
-
-	BigInteger m = sk.Decrypt(c);
-	System.out.println("m = " + m);
-    }
-
-    public static void main(String[] args) throws ArithmeticException{
-	RSASecKeyTest();
-    }
-
 }
