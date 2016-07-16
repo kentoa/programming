@@ -2,8 +2,6 @@ import java.math.BigInteger;
 
 public class RSATest {
 
-    RSATest(){}
-
     static void RSATest(){
 	BigInteger p = BigInteger.valueOf(5), q = BigInteger.valueOf(7);
 	BigInteger n = p.multiply(q), e = BigInteger.valueOf(5); // public key
