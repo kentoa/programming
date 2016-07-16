@@ -5,11 +5,12 @@ public class RSASecKey {
     private BigInteger phi; // φ(pq) = (p - 1)(q - 1)
     private BigInteger n; // n = p * q
 
-    RSASecKey(BigInteger p, BigInteger q, BigInteger e){
-	this.phi = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+    RSASecKey(BigInteger phi, BigInteger n, BigInteger e){
+	this.phi = phi;
+
 	try{
 	this.d = e.modInverse(phi);
-	this.n = p.multiply(q);
+	this.n = n;
 	}catch(Exception ex){
 	    System.out.println("inverse not found");
 	    System.exit(1);

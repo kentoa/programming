@@ -3,8 +3,8 @@ import java.math.BigInteger;
 public class RSAPubKey {
     private BigInteger n, e; // public key
     
-    public RSAPubKey(BigInteger p, BigInteger q, BigInteger e){ // Constructor
-	this.n = p.multiply(q);
+    public RSAPubKey(BigInteger n, BigInteger e){ // Constructor
+	this.n = n;
 	this.e = e;
     }
     
