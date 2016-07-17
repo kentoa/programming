@@ -1,12 +1,12 @@
 all: RSAPubKey RSASecKey RSATest
 
-RSAPubKey: RSAPubKey.java
+RSAPubKey:
 	javac RSAPubKey.java
 
-RSASecKey: RSASEcKey.java
+RSASecKey:
 	javac RSASecKey.java
 
-RSATest: RSATest.java
+RSATest: 
 	javac RSATest.java
 	java RSATest
 
