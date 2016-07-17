@@ -1,9 +1,9 @@
 all: DHUser DHTest
 
-DHUser: DHUser.java
+DHUser:
 	javac DHUser.java
 
-DHTest: DHTest.java
+DHTest:
 	javac DHTest.java
 	java DHTest
 
