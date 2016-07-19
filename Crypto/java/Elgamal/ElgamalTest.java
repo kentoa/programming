@@ -3,30 +3,40 @@ import java.math.BigInteger;
 public class ElgamalTest {
 
     static void ElgamalTest(){
-	BigInteger p, g, x, y, r, m; // pk(p, g, y), sk(x)
+	BigInteger p, g, x, y, r, m1, m2; // pk(p, g, y), sk(x)
 	
 	p = BigInteger.valueOf(1021);
 	g = BigInteger.valueOf(2);
 	x = BigInteger.valueOf(3);
 	y = g.modPow(x, p);
 	r = BigInteger.valueOf(4);
-	m = BigInteger.valueOf(5);
+	m1 = BigInteger.valueOf(5);
+	m2 = BigInteger.valueOf(3);
 
-	BigInteger[] param = {p, g, x, y, r, m};
+	BigInteger[] param = {p, g, x, y, r};
 	
-	System.out.print("(p g x y r m) = ");
+	System.out.print("[ p g x y r ] = [ ");
 	for(int i = 0, end = param.length; i < end; i++){
 	    System.out.print(param[i] + " ");
 	}
-	System.out.println();
+	System.out.println("]");
+	System.out.println("(m1, m2) = (" + m1 + ", " + m2 + ")");
 
 	ElgamalPubKey pk = new ElgamalPubKey(p, g, y);
-	BigInteger c[] = pk.Encrypt(m, r);
-	System.out.println("(c1, c2) = " + c[0] + ", " +c[1]);
+	BigInteger c1[] = pk.Encrypt(m1, r);
+	System.out.println("C1(c1, c2) = " + c1[0] + ", " +c1[1]);
 	
+	BigInteger c2[] = pk.Encrypt(m2, r);
+	System.out.println("C2(c1, c2) = " + c2[0] + ", " +c2[1]);
+	
+	BigInteger csum[] = {c1[0].multiply(c2[0]), c1[1].multiply(c2[1])};
+
 	ElgamalSecKey sk = new ElgamalSecKey(x, p);
-	m = sk.Decrypt(c);
-	System.out.println("m = " + m);
+	m1 = sk.Decrypt(c1);
+	System.out.println("m1 = " + m1);
+
+	BigInteger msum = sk.Decrypt(csum);
+	System.out.println("m1 * m2 = " + msum);
     }
 
     public static void main(String[] args){
