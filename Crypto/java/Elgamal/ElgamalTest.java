@@ -29,14 +29,14 @@ public class ElgamalTest {
 	BigInteger c2[] = pk.Encrypt(m2, r);
 	System.out.println("C2(c1, c2) = " + c2[0] + ", " +c2[1]);
 	
-	BigInteger csum[] = {c1[0].multiply(c2[0]), c1[1].multiply(c2[1])};
+	BigInteger cmul[] = {c1[0].multiply(c2[0]), c1[1].multiply(c2[1])};
 
 	ElgamalSecKey sk = new ElgamalSecKey(x, p);
 	m1 = sk.Decrypt(c1);
 	System.out.println("m1 = " + m1);
 
-	BigInteger msum = sk.Decrypt(csum);
-	System.out.println("m1 * m2 = " + msum);
+	BigInteger mmul = sk.Decrypt(cmul);
+	System.out.println("m1 * m2 = " + mmul);
     }
 
     public static void main(String[] args){
