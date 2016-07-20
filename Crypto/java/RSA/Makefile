@@ -8,7 +8,6 @@ RSASecKey:
 
 RSATest: 
 	javac RSATest.java
-	java RSATest
 
 clean:
-	rm *.class rm *.java~
+	rm *.class rm *.java~ rm Makefile~

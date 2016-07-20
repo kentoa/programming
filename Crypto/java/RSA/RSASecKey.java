@@ -17,12 +17,9 @@ public class RSASecKey {
 	}
     }
 
-    public BigInteger getD(){
-	return this.d;
-    }
-
     public BigInteger Decrypt(BigInteger c){
 	BigInteger m =  c.modPow(this.d, this.n);
+	System.out.println("d = " + this.d);
 	return m;
     }
 }
