@@ -10,7 +10,7 @@ public class RabinPubKey {
     }
 
     public BigInteger Encrypt(BigInteger x){
-	BigInteger c = x.multiply(x.add(this.B)).mod(n);
+	BigInteger c = x.multiply(x.add(this.B)).mod(this.n);
 	return c;
     }
 
