@@ -34,4 +34,16 @@ public class Polynomial {
 	return fx;
     }
 
+    public int getCoeffAt(int i){
+	int ci = this.coeff.get(i); 
+	return ci;
+    }
+
+    public Polynomial AddCoeff(Polynomial coeffA, Polynomial coeffB){
+	Polynomial coeff = new Polynomial();
+
+
+	return coeff;
+    }
+
 }
