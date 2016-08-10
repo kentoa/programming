@@ -71,4 +71,25 @@ public class Polynomial {
 	}    
 	return coeff;
     }
+
+    public Polynomial polyDiff(){ // differentiation
+	Polynomial df = new Polynomial();
+	int deg = getDegree();
+
+	for(int i = 1; i < deg; i++){
+	    df.setCoeff(getCoeffAt(i) * i);
+	}
+	return df;
+    }
+
+    void printPolynomial(){
+	int deg = getDegree();
+
+	System.out.print("[");
+	for(int i = 0; i < deg; i++){
+	    System.out.print(getCoeffAt(i));
+	    if(i != deg - 1) System.out.print(" ");
+	}
+	System.out.println("]");
+    }
 }
