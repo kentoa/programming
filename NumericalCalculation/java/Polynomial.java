@@ -72,6 +72,30 @@ public class Polynomial {
 	return coeff;
     }
 
+    public Polynomial SubCoeff(Polynomial coeffA, Polynomial coeffB){
+	Polynomial coeff = new Polynomial();
+	
+	int degA = coeffA.getDegree(), degB = coeffB.getDegree();
+	
+	if(degA < degB){
+	    for(int i = degA; i < degB; i++){
+		coeffA.setCoeff(0);
+	    }
+	}
+	else if(degB < degA){
+	    for(int i = degB; i < degA; i++){
+		coeffB.setCoeff(0);
+	    }
+	}
+	
+	int newdeg = coeffA.getDegree(); 
+	
+	for(int i = 0; i < newdeg; i++){
+	    coeff.setCoeff(coeffA.getCoeffAt(i) - coeffB.getCoeffAt(i));
+	}    
+	return coeff;
+    }
+    
     public Polynomial polyDiff(){ // differentiation
 	Polynomial df = new Polynomial();
 	int deg = getDegree();
