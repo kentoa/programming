@@ -95,6 +95,23 @@ public class Polynomial {
 	}    
 	return coeff;
     }
+
+    public Polynomial MulCoeff(Polynomial coeffA, Polynomial coeffB){
+	Polynomial coeff = new Polynomial();
+	int degA = coeffA.getDegree(), degB = coeffB.getDegree();
+
+	for(int i = 0; i < degA; i++){
+	    Polynomial tmp = new Polynomial();
+	    for(int j = 0; j < degB; j++){
+		for(int k = 0; k < i; k++){ //ミスがあるので修正する
+		    tmp.setCoeff(0);
+		}
+		tmp.setCoeff(coeffA.getCoeffAt(i) * coeffB.getCoeffAt(j));
+	    }
+	    coeff = AddCoeff(coeff, tmp);
+	}
+	return coeff;
+    }
     
     public Polynomial polyDiff(){ // differentiation
 	Polynomial df = new Polynomial();
@@ -105,6 +122,21 @@ public class Polynomial {
 	}
 	return df;
     }
+
+    /*
+    public Polynomial GCD(Polynomial coeffA, Polynomial coeffB){
+	Polynomial coeff = new Polynomial();
+
+	int degA = coeffA.getDegree(), degB = coeffB.getDegree();
+
+	if(degA < degB){
+	    coeffB.
+	    coeff.setCoeff();
+	}
+	
+	return coeff;
+    }
+    */
 
     void printPolynomial(){
 	int deg = getDegree();
