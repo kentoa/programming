@@ -4,7 +4,7 @@ public class Polynomial {
     private ArrayList<Integer> coeff = new ArrayList<>(); // f(x) = c0 + c1*x + c2*x^2 + ...
 
     public Polynomial(){
-
+    
     }
 
     public Polynomial(int[] coeff){
@@ -97,20 +97,26 @@ public class Polynomial {
     }
 
     public Polynomial MulCoeff(Polynomial coeffA, Polynomial coeffB){
-	Polynomial coeff = new Polynomial();
+	Polynomial coeffC = new Polynomial();
 	int degA = coeffA.getDegree(), degB = coeffB.getDegree();
+	int degC = degA + degB - 1;
+
+	for(int i = 0; i < degC; i++){
+	    coeffC.setCoeff(0);
+	}
 
 	for(int i = 0; i < degA; i++){
-	    Polynomial tmp = new Polynomial();
 	    for(int j = 0; j < degB; j++){
-		for(int k = 0; k < i; k++){ //ミスがあるので修正する
+		Polynomial tmp = new Polynomial();
+		for(int k = 0; k < i + j; k++){ //ミスがあるので修正する
 		    tmp.setCoeff(0);
 		}
 		tmp.setCoeff(coeffA.getCoeffAt(i) * coeffB.getCoeffAt(j));
+		// tmp.printPolynomial(); //debug
+		coeffC = AddCoeff(coeffC, tmp);
 	    }
-	    coeff = AddCoeff(coeff, tmp);
 	}
-	return coeff;
+	return coeffC;
     }
     
     public Polynomial polyDiff(){ // differentiation
