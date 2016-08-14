@@ -128,21 +128,38 @@ public class Polynomial {
 	}
 	return df;
     }
-
-    /*
-    public Polynomial GCD(Polynomial coeffA, Polynomial coeffB){
+    
+    public Polynomial ModularReduction(Polynomial coeffA, Polynomial coeffB){
 	Polynomial coeff = new Polynomial();
-
+	Polynomial x = new Polynomial();
 	int degA = coeffA.getDegree(), degB = coeffB.getDegree();
+	int deg, ro;
 
 	if(degA < degB){
-	    coeffB.
-	    coeff.setCoeff();
-	}
-	
+	    deg = degB - degA;
+	    ro = coeffB.getCoeffAt(degB - 1);
+	    
+	    for(int i = 0; i < deg; i++){
+		x.setCoeff(0);
+	    }
+
+	    x.setCoeff(ro);
+	    x = MulCoeff(x, coeffA);
+	    coeff = SubCoeff(coeffB, x);
+	}else{
+	    deg = degA - degB;
+	    ro = coeffA.getCoeffAt(degA - 1);
+	    
+	    for(int i = 0; i < deg; i++){
+		x.setCoeff(0);
+	    }
+
+	    x.setCoeff(ro);
+	    x = MulCoeff(x, coeffB);
+	    coeff = SubCoeff(coeffA, x);
+	}	
 	return coeff;
     }
-    */
 
     void printPolynomial(){
 	int deg = getDegree();
