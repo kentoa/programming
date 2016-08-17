@@ -14,36 +14,54 @@ public class Matrix {
 	return this.matrix[row][col];
     }
 
+    public int getRow(){
+	return this.matrix.length;
+    }
+
+    public int getCol(){
+	return this.matrix[0].length;
+    }
+
     public Matrix zeros(int row, int col){
-	double[][] matrix = new double[row][col];
+	Matrix A = new Matrix(row, col);
 	
 	for(int i = 0; i < row; i++){
 	    for(int j = 0; j < col; j++){
-		matrix[i][j] = 0;
+		A.setVal(i, j, 0);
 	    }
 	}
-	return matrix;
+	return A;
     }
    
     public Matrix ones(int row, int col){
-	double[][] matrix = new double[row][col];
+	Matrix A = new Matrix(row, col);
 	
 	for(int i = 0; i < row; i++){
 	    for(int j = 0; j < col; j++){
-		matrix[i][j] = 1;
+		A.setVal(i, j, 1);
 	    }
 	}
-	return matrix;
+	return A;
     } 
     
     public Matrix eye(int row, int col){
-	double[][] matrix = new double[row][col];
+	Matrix A = new Matrix(row, col);
+	int val;
 
 	for(int i = 0; i < row; i++){
 	    for(int j = 0; j < col; j++){
-		matrix[i][j] = (i == j)? 1 : 0;
+		val = (i == j)? 1 : 0;
+		A.setVal(i, j, val);
 	    }
 	}
+	return A;
     }
 
+    /*
+    public Matrix add(Matrix A, Matrix B){
+	Matrix C;
+
+	return C;
+    }
+    */
 }
