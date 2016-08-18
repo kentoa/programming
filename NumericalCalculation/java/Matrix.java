@@ -2,6 +2,21 @@
 public class Matrix {
     private double[][] matrix;
 
+    public Matrix(){
+
+    }
+
+    public Matrix(double[][] matrix){
+	int row = matrix.length, col = matrix[0].length;
+	this.matrix = new double[row][col];
+
+	for(int i = 0; i < row; i++){
+	    for(int j = 0; j < col; j++){
+		this.matrix[i][j] = matrix[i][j];
+	    }
+	}
+    }
+
     public Matrix(int row, int col){
 	this.matrix = new double[row][col];
     }
@@ -57,11 +72,35 @@ public class Matrix {
 	return A;
     }
 
-    /*
-    public Matrix add(Matrix A, Matrix B){
-	Matrix C;
+    public void print(){
+	int row = this.matrix.length;
+	int col = this.matrix[0].length;
 
+	for(int i = 0; i < row; i++){
+	    for(int j = 0; j < col; j++){
+		System.out.print(this.matrix[i][j] + " ");
+	    }
+	    System.out.println();
+	}
+    }
+
+    public Matrix add(Matrix A, Matrix B){
+	int rowA = A.getRow(), rowB = B.getRow();
+	int colA = A.getCol(), colB = B.getCol();	
+	Matrix C = new Matrix(rowA, colA);
+
+	if(rowA != rowB || colA != colB){
+	    System.out.println("Matrix Size is not match");
+	    System.exit(1);
+	}
+	else{
+	    for(int i  = 0; i < rowA; i++){
+		for(int j = 0; j < colA; j++){
+		    C.setVal(i, j, A.getVal(i, j) + B.getVal(i, j));
+		}
+	    }
+	}
 	return C;
     }
-    */
+
 }
