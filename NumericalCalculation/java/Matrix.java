@@ -103,4 +103,23 @@ public class Matrix {
 	return C;
     }
 
+    public Matrix sub(Matrix A, Matrix B){
+	int rowA = A.getRow(), rowB = B.getRow();
+	int colA = A.getCol(), colB = B.getCol();	
+	Matrix C = new Matrix(rowA, colA);
+
+	if(rowA != rowB || colA != colB){
+	    System.out.println("Matrix Size is not match");
+	    System.exit(1);
+	}
+	else{
+	    for(int i  = 0; i < rowA; i++){
+		for(int j = 0; j < colA; j++){
+		    C.setVal(i, j, A.getVal(i, j) - B.getVal(i, j));
+		}
+	    }
+	}
+	return C;
+    }
+
 }
