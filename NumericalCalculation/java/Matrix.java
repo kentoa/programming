@@ -142,4 +142,16 @@ public class Matrix {
 	return C;
     }
 
+    public Matrix transpose(Matrix A){
+	int row = A.getRow(), col = A.getCol();
+	Matrix T = new Matrix(col, row);
+	
+	for(int i = 0; i < row; i++){
+	    for(int j = 0; j < col; j++){
+		T.setVal(j, i, A.getVal(i, j));
+	    }
+	}
+	return T;
+    }
+    
 }
