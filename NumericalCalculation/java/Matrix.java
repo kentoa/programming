@@ -109,13 +109,33 @@ public class Matrix {
 	Matrix C = new Matrix(rowA, colA);
 
 	if(rowA != rowB || colA != colB){
-	    System.out.println("Matrix Size is not match");
+	    System.out.println("Matrix size is not match");
 	    System.exit(1);
 	}
 	else{
 	    for(int i  = 0; i < rowA; i++){
 		for(int j = 0; j < colA; j++){
 		    C.setVal(i, j, A.getVal(i, j) - B.getVal(i, j));
+		}
+	    }
+	}
+	return C;
+    }
+
+    public Matrix mul(Matrix A, Matrix B){
+	int rowA = A.getRow(), rowB = B.getRow();
+	int colA = A.getCol(), colB = B.getRow();
+	Matrix C = A.zeros(rowA, colB);
+	
+	if(colA != rowB){
+	    System.out.println("Matrix size is not match");
+	    System.exit(1);
+	}else{
+	    for(int i = 0; i < rowA; i++){
+		for(int k = 0; k < colB; k++){
+		    for(int j = 0; j < colA; j++){
+			C.setVal(i, k, C.getVal(i, k) + (A.getVal(i, j) * B.getVal(j, k)));
+		    }
 		}
 	    }
 	}
