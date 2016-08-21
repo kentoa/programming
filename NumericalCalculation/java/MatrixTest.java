@@ -27,10 +27,17 @@ public class MatrixTest {
 	C.print();
     }    
 
+    public static void TransTest(){
+	double[][] t = {{1, 2, 3}, {4, 5, 6}};
+	Matrix T = mat.transpose(new Matrix(t));
+	T.print();
+    }
+
     public static void main(String[] args){
 	// EyeTest();
 	// AddTest();
 	// SubTest();
-	MulTest();
+	// MulTest();
+	TransTest();
     }
 }
