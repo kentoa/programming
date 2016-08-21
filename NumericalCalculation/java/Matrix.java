@@ -153,5 +153,29 @@ public class Matrix {
 	}
 	return T;
     }
-    
+
+    public Matrix vercat(Matrix A, Matrix B){ // vertically concatenate A and B
+	int rowA = A.getRow(), rowB = B.getRow();
+	int colA = A.getCol(), colB = B.getCol();
+	Matrix C = new Matrix(rowA + rowB, colA);
+	
+	if(colA != colB){
+	    System.out.println("column size is not match");
+	    System.exit(1);
+	}else{
+	    for(int i = 0; i < rowA; i++){
+		for(int j = 0; j < colA; j++){
+		    C.setVal(i, j, A.getVal(i, j));
+		}
+	    }
+	    
+	    for(int i = 0; i < rowB; i++){
+		for(int j = 0; j < colB; j++){
+		    C.setVal(i + rowA, j, B.getVal(i, j));
+		}
+	    }
+	}
+	return C;
+    }
+
 }
