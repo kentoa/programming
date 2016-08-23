@@ -73,68 +73,68 @@ public class Matrix {
     }
 
     public void print(){
-	int row = this.matrix.length;
-	int col = this.matrix[0].length;
+	int row = getRow();
+	int col = getCol();
 
 	for(int i = 0; i < row; i++){
 	    for(int j = 0; j < col; j++){
-		System.out.print(this.matrix[i][j] + " ");
+		System.out.print(getVal(i, j) + " ");
 	    }
 	    System.out.println();
 	}
     }
 
-    public Matrix add(Matrix A, Matrix B){
-	int rowA = A.getRow(), rowB = B.getRow();
-	int colA = A.getCol(), colB = B.getCol();	
-	Matrix C = new Matrix(rowA, colA);
+    public Matrix add(Matrix A){
+	int row = getRow(), rowA = A.getRow();
+	int col = getCol(), colA = A.getCol();	
+	Matrix C = new Matrix(row, col);
 
-	if(rowA != rowB || colA != colB){
+	if(row != rowA || col != colA){
 	    System.out.println("Matrix Size is not match");
 	    System.exit(1);
 	}
 	else{
-	    for(int i  = 0; i < rowA; i++){
-		for(int j = 0; j < colA; j++){
-		    C.setVal(i, j, A.getVal(i, j) + B.getVal(i, j));
+	    for(int i  = 0; i < row; i++){
+		for(int j = 0; j < col; j++){
+		    C.setVal(i, j, getVal(i, j) + A.getVal(i, j));
 		}
 	    }
 	}
 	return C;
     }
 
-    public Matrix sub(Matrix A, Matrix B){
-	int rowA = A.getRow(), rowB = B.getRow();
-	int colA = A.getCol(), colB = B.getCol();	
+    public Matrix sub(Matrix A){
+	int row = getRow(), rowA = A.getRow();
+	int col = getCol(), colA = A.getCol();	
 	Matrix C = new Matrix(rowA, colA);
 
-	if(rowA != rowB || colA != colB){
+	if(row != rowA || col != colA){
 	    System.out.println("Matrix size is not match");
 	    System.exit(1);
 	}
 	else{
-	    for(int i  = 0; i < rowA; i++){
-		for(int j = 0; j < colA; j++){
-		    C.setVal(i, j, A.getVal(i, j) - B.getVal(i, j));
+	    for(int i  = 0; i < row; i++){
+		for(int j = 0; j < col; j++){
+		    C.setVal(i, j, getVal(i, j) - A.getVal(i, j));
 		}
 	    }
 	}
 	return C;
     }
 
-    public Matrix mul(Matrix A, Matrix B){
-	int rowA = A.getRow(), rowB = B.getRow();
-	int colA = A.getCol(), colB = B.getRow();
-	Matrix C = A.zeros(rowA, colB);
+    public Matrix mul(Matrix A){
+	int row = getRow(), rowA = A.getRow();
+	int col = getCol(), colA = A.getCol();
+	Matrix C = zeros(row, colA);
 	
-	if(colA != rowB){
+	if(col != rowA){
 	    System.out.println("Matrix size is not match");
 	    System.exit(1);
 	}else{
-	    for(int i = 0; i < rowA; i++){
-		for(int k = 0; k < colB; k++){
-		    for(int j = 0; j < colA; j++){
-			C.setVal(i, k, C.getVal(i, k) + (A.getVal(i, j) * B.getVal(j, k)));
+	    for(int i = 0; i < row; i++){
+		for(int k = 0; k < colA; k++){
+		    for(int j = 0; j < col; j++){
+			C.setVal(i, k, C.getVal(i, k) + (getVal(i, j) * A.getVal(j, k)));
 		    }
 		}
 	    }
@@ -142,13 +142,13 @@ public class Matrix {
 	return C;
     }
 
-    public Matrix transpose(Matrix A){
-	int row = A.getRow(), col = A.getCol();
+    public Matrix transpose(){
+	int row = getRow(), col = getCol();
 	Matrix T = new Matrix(col, row);
 	
 	for(int i = 0; i < row; i++){
 	    for(int j = 0; j < col; j++){
-		T.setVal(j, i, A.getVal(i, j));
+		T.setVal(j, i, getVal(i, j));
 	    }
 	}
 	return T;
