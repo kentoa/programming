@@ -65,7 +65,7 @@ public class Matrix {
 
 	for(int i = 0; i < row; i++){
 	    for(int j = 0; j < col; j++){
-		val = (i == j)? 1 : 0;
+		val = (i == j) ? 1 : 0;
 		A.setVal(i, j, val);
 	    }
 	}
@@ -154,48 +154,48 @@ public class Matrix {
 	return T;
     }
 
-    public Matrix vercat(Matrix A, Matrix B){ // vertically concatenate A and B
-	int rowA = A.getRow(), rowB = B.getRow();
-	int colA = A.getCol(), colB = B.getCol();
-	Matrix C = new Matrix(rowA + rowB, colA);
+    public Matrix vercat(Matrix A){ // vertically concatenate two matrix
+	int row = getRow(), rowA = A.getRow();
+	int col = getCol(), colA = A.getCol();
+	Matrix C = new Matrix(row + rowA, col);
 	
-	if(colA != colB){
+	if(col != colA){
 	    System.out.println("column size is not match");
 	    System.exit(1);
 	}else{
-	    for(int i = 0; i < rowA; i++){
-		for(int j = 0; j < colA; j++){
-		    C.setVal(i, j, A.getVal(i, j));
+	    for(int i = 0; i < row; i++){
+		for(int j = 0; j < col; j++){
+		    C.setVal(i, j, getVal(i, j));
 		}
 	    }
 	    
-	    for(int i = 0; i < rowB; i++){
-		for(int j = 0; j < colB; j++){
-		    C.setVal(i + rowA, j, B.getVal(i, j));
+	    for(int i = 0; i < rowA; i++){
+		for(int j = 0; j < colA; j++){
+		    C.setVal(i + row, j, A.getVal(i, j));
 		}
 	    }
 	}
 	return C;
     }
 
-    public Matrix horzcat(Matrix A, Matrix B){ // concatenate A and B
-	int rowA = A.getRow(), rowB = B.getRow();
-	int colA = A.getCol(), colB = B.getCol();
-	Matrix C = new Matrix(rowA, colA + colB);
+    public Matrix horzcat(Matrix A){ // concatenate two matrix
+	int row = getRow(), rowA = A.getRow();
+	int col = getCol(), colA = A.getCol();
+	Matrix C = new Matrix(row, col + colA);
 	
-	if(rowA != rowB){
+	if(row != rowA){
 	    System.out.println("column size is not match");
 	    System.exit(1);
 	}else{
-	    for(int i = 0; i < rowA; i++){
-		for(int j = 0; j < colA; j++){
-		    C.setVal(i, j, A.getVal(i, j));
+	    for(int i = 0; i < row; i++){
+		for(int j = 0; j < col; j++){
+		    C.setVal(i, j, getVal(i, j));
 		}
 	    }
 	    
-	    for(int i = 0; i < rowB; i++){
-		for(int j = 0; j < colB; j++){
-		    C.setVal(i, j + colA, B.getVal(i, j));
+	    for(int i = 0; i < rowA; i++){
+		for(int j = 0; j < colA; j++){
+		    C.setVal(i, j + col, A.getVal(i, j));
 		}
 	    }
 	}
