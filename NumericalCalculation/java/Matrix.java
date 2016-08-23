@@ -178,4 +178,28 @@ public class Matrix {
 	return C;
     }
 
+    public Matrix horzcat(Matrix A, Matrix B){ // concatenate A and B
+	int rowA = A.getRow(), rowB = B.getRow();
+	int colA = A.getCol(), colB = B.getCol();
+	Matrix C = new Matrix(rowA, colA + colB);
+	
+	if(rowA != rowB){
+	    System.out.println("column size is not match");
+	    System.exit(1);
+	}else{
+	    for(int i = 0; i < rowA; i++){
+		for(int j = 0; j < colA; j++){
+		    C.setVal(i, j, A.getVal(i, j));
+		}
+	    }
+	    
+	    for(int i = 0; i < rowB; i++){
+		for(int j = 0; j < colB; j++){
+		    C.setVal(i, j + colA, B.getVal(i, j));
+		}
+	    }
+	}
+	return C;
+    }
+    
 }
