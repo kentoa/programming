@@ -13,24 +13,35 @@ public class MatrixTest {
     }
 
     public static void AddTest(){
-	Matrix C = mat.add(A, B);
+	Matrix C = A.add(B);
 	C.print();
     }
 
     public static void SubTest(){
-	Matrix C = mat.sub(A, B);
+	Matrix C = A.sub(B);
 	C.print();
     }
 
     public static void MulTest(){
-	Matrix C = mat.mul(A, B);
+	Matrix C = A.mul(B);
 	C.print();
     }    
 
     public static void TransTest(){
 	double[][] t = {{1, 2, 3}, {4, 5, 6}};
-	Matrix T = mat.transpose(new Matrix(t));
+	Matrix T = new Matrix(t);
+	T = T.transpose();
 	T.print();
+    }
+    
+    public static void VerCatTest(){
+	Matrix C = A.vercat(B);
+	C.print();
+    }
+
+    public static void HorzCatTest(){
+	Matrix C = A.horzcat(B);
+	C.print();
     }
 
     public static void main(String[] args){
@@ -38,6 +49,8 @@ public class MatrixTest {
 	// AddTest();
 	// SubTest();
 	// MulTest();
-	TransTest();
+	// TransTest();
+	// VerCatTest();
+	HorzCatTest();
     }
 }
