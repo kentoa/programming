@@ -30,8 +30,20 @@ public class Complex {
 
     public Complex add(Complex b){
 	Complex c = new Complex();
+
 	c.setRe(this.Re + b.getRe());
 	return c;
+    }
+
+    public Complex sub(Complex b){
+	Complex c = new Complex();
+	
+	c.setRe(this.Re - b.getRe());
+	return c;
+    }
+
+    public void print(){
+	System.out.println("Complex number: " + this.getRe() + " + " + this.getIm() + "i");
     }
 
 }
