@@ -1,53 +1,55 @@
 
 public class Complex {
-    private double Re;
-    private double Im;
+    private double re;
+    private double im;
 
     public Complex(){
-	this.Re = 0;
-	this.Im = 0;
+	this.re = 0;
+	this.im = 0;
     }
 
-    public Complex(double Re, double Im){
-	this.Re = Re;
-	this.Im = Im;
+    public Complex(double re, double im){
+	this.re = re;
+	this.im = im;
     }
 
-    public void setRe(double Re){
-	this.Re = Re;
+    public void setRe(double re){
+	this.re = re;
     }
 
-    public void setIm(double Im){
-	this.Im = Im;
+    public void setIm(double im){
+	this.im = im;
     }
 
     public double getRe(){
-	return this.Re;
+	return this.re;
     }
 
     public double getIm(){
-	return this.Im;
+	return this.im;
     }
 
     public Complex add(Complex b){
 	Complex c = new Complex();
 
-	c.setRe(this.Re + b.getRe());
+	c.setRe(this.re + b.getRe());
+	c.setIm(this.im + b.getIm());
 	return c;
     }
 
     public Complex sub(Complex b){
 	Complex c = new Complex();
 	
-	c.setRe(this.Re - b.getRe());
+	c.setRe(this.re - b.getRe());
+	c.setIm(this.im - b.getIm());
 	return c;
     }
 
     public Complex mul(Complex b){
 	Complex c = new Complex();
 
-	c.setRe(this.Re * b.getRe() - this.Im * b.getIm());
-	c.setIm(this.Re * b.getIm() + this.Im * b.getRe());
+	c.setRe(this.re * b.getRe() - this.im * b.getIm());
+	c.setIm(this.re * b.getIm() + this.im * b.getRe());
 	return c;
     }
 
