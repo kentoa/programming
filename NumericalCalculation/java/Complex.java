@@ -4,7 +4,8 @@ public class Complex {
     private double Im;
 
     public Complex(){
-
+	this.Re = 0;
+	this.Im = 0;
     }
 
     public Complex(double Re, double Im){
@@ -42,8 +43,16 @@ public class Complex {
 	return c;
     }
 
+    public Complex mul(Complex b){
+	Complex c = new Complex();
+
+	c.setRe(this.Re * b.getRe() - this.Im * b.getIm());
+	c.setIm(this.Re * b.getIm() + this.Im * b.getRe());
+	return c;
+    }
+
     public void print(){
-	System.out.println("Complex number: " + this.getRe() + " + " + this.getIm() + "i");
+	System.out.println("value of complex number: " + this.getRe() + " + " + this.getIm() + "i");
     }
 
 }
