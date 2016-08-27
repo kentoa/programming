@@ -30,19 +30,11 @@ public class Complex {
     }
 
     public Complex add(Complex b){
-	Complex c = new Complex();
-
-	c.setRe(this.re + b.getRe());
-	c.setIm(this.im + b.getIm());
-	return c;
+	return new Complex(this.re + b.getRe(), this.im + b.getIm());
     }
 
     public Complex sub(Complex b){
-	Complex c = new Complex();
-	
-	c.setRe(this.re - b.getRe());
-	c.setIm(this.im - b.getIm());
-	return c;
+	return new Complex(this.re - b.getRe(), this.im - b.getIm());
     }
 
     public Complex mul(Complex b){
@@ -53,8 +45,12 @@ public class Complex {
 	return c;
     }
 
+    public Complex conjugate(){
+	return new Complex(getRe(), -getIm());
+    }
+
     public void print(){
-	System.out.println("value of complex number: " + this.getRe() + " + " + this.getIm() + "i");
+	System.out.println("value of complex number: " + getRe() + " + " + getIm() + "i");
     }
 
 }
