@@ -4,8 +4,8 @@ public class Complex {
     private double im;
 
     public Complex(){
-	this.re = 0;
-	this.im = 0;
+	re = 0;
+	im = 0;
     }
 
     public Complex(double re, double im){
@@ -22,26 +22,26 @@ public class Complex {
     }
 
     public double getRe(){
-	return this.re;
+	return re;
     }
 
     public double getIm(){
-	return this.im;
+	return im;
     }
 
     public Complex add(Complex b){
-	return new Complex(this.re + b.getRe(), this.im + b.getIm());
+	return new Complex(re + b.getRe(), im + b.getIm());
     }
 
     public Complex sub(Complex b){
-	return new Complex(this.re - b.getRe(), this.im - b.getIm());
+	return new Complex(re - b.getRe(), im - b.getIm());
     }
 
     public Complex mul(Complex b){
 	Complex c = new Complex();
 
-	c.setRe(this.re * b.getRe() - this.im * b.getIm());
-	c.setIm(this.re * b.getIm() + this.im * b.getRe());
+	c.setRe(re * b.getRe() - im * b.getIm());
+	c.setIm(re * b.getIm() + im * b.getRe());
 	return c;
     }
 
@@ -49,8 +49,12 @@ public class Complex {
 	return new Complex(getRe(), -getIm());
     }
 
+    public double abs(){
+	return Math.sqrt(re * re + im * im);
+    }
+
     public void print(){
-	System.out.println("value of complex number: " + getRe() + " + " + getIm() + "i");
+	System.out.println("a + bi = " + getRe() + " + " + getIm() + "i");
     }
 
 }
