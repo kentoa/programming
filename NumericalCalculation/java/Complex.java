@@ -45,6 +45,15 @@ public class Complex {
 	return c;
     }
 
+    public Complex div(Complex b){
+	Complex c = new Complex();
+	double denominator = b.getRe() * b.getRe() + b.getIm() * b.getIm();
+
+	c.setRe((re * b.getRe() + im * b.getIm()) / denominator);
+	c.setIm((im * b.getRe() + re * b.getIm()) / denominator);
+	return c;
+    }
+
     public Complex conjugate(){
 	return new Complex(getRe(), -getIm());
     }
