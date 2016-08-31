@@ -62,6 +62,10 @@ public class Complex {
 	return Math.sqrt(re * re + im * im);
     }
 
+    public double arg(){
+	return Math.atan(im / re);
+    }
+
     public void print(){
 	System.out.println("a + bi = " + getRe() + " + " + getIm() + "i");
     }
