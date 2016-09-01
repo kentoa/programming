@@ -28,11 +28,17 @@ public class ComplexTest {
 	System.out.println("abs(c1) = " + abs);
     }
 
+    static void conjugateTest(){
+	Complex c = c1.conjugate();
+	c.print();
+    }
+
     public static void main(String[] args){
 	// addTest();
 	// subTest();
 	// mulTest();
 	// divTest();
-	absTest();
+	// absTest();
+	conjugateTest();
     }
 }
