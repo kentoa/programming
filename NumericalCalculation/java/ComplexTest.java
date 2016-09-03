@@ -33,12 +33,17 @@ public class ComplexTest {
 	c.print();
     }
 
+    static void argTest(){
+	System.out.println(c1.arg());
+    }
+
     public static void main(String[] args){
 	// addTest();
 	// subTest();
 	// mulTest();
 	// divTest();
 	// absTest();
-	conjugateTest();
+	// conjugateTest();
+	argTest();
     }
 }
