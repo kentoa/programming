@@ -47,8 +47,14 @@ public class GA {
     }  
 
 	void calcDist(){
+	    double square_x, square_y;
 	    for(int i = 0; i < cityNum; i++){
-
+		for(int j = 0; j < cityNum; j++){
+		    if(i == j) dist[i][j] = 0;
+		    else{
+			square_x = Math.pow(city[i][1] - city[j][1], 2);
+			square_y = Math.pow(city[i][2] - city[j][2], 2);
+			dist[i][j] = Math.sqrt(square_x + square_y); 
 	    }
 	}
 	
