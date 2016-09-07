@@ -55,7 +55,9 @@ public class GA {
 			square_x = Math.pow(city[i][1] - city[j][1], 2);
 			square_y = Math.pow(city[i][2] - city[j][2], 2);
 			dist[i][j] = Math.sqrt(square_x + square_y); 
+		    }
+		}
 	    }
 	}
-	
+
 }
