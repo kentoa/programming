@@ -16,7 +16,7 @@ public class GA {
 	
     }
 
-    ArrayList<String[]> scanCity(String filepath){
+    void initCity(String filepath){
 	File file = new File(filepath);
  
 	try{
@@ -27,15 +27,27 @@ public class GA {
 	    ArrayList<String[]> point = new ArrayList<>(); // (x, y)
 	    
 	    int row = 0;
-	    while((line = br.readLine()) != null && row++ > 6){
+	    while((line = br.readLine()) != null && row++ > 5){
 		String[] tmp = line.split(",");
 		point.add(tmp);
 	    }
+
+	    setCityNum(point);
+	    System.out.println(cityNum);
+	    setDim(point);
+	    city = new double[cityNum][dim + 1];	    
+
+
+	    	    
+	    for(int i = 0; i < cityNum; i++){
+		for(int j = 0; j < dim + 1; j++){
+		    city[i][j] = Double.valueOf(point.get(i)[j]); // (citynum, x, y, ...)
+		}
+	    }  
 	}catch(Exception e){
 	    System.out.println("can't open the file");
 	    System.exit(1);
 	}
-	return point;
     }
 
     void setCityNum(ArrayList<String[]> point){
@@ -43,20 +55,8 @@ public class GA {
     }
 
     void setDim(ArrayList<String[]> point){
-	this.dim = point.get(0).length -1;
-    }
-
-    void initCity(ArrayList<String[]> point){
-	city = new double[cityNum][dim + 1];	    
-
-	setCityNum(point);
-	setDim(point);
-
-	for(int i = 0; i < cityNum; i++){
-	    for(int j = 0; j < dim + 1; j++){
-		city[i][j] = Double.valueOf(point.get(i)[j]); // (citynum, x, y, ...)
-	    }
-	}  
+	System.out.println("len: " + point.get(0));
+	this.dim = point.get(0).length - 1;
     }
     
     /*
@@ -86,8 +86,7 @@ public class GA {
     
     public static void main(String[] args){
 	GA ga = new GA();
-	ArrayList<String[]> point  = ga.scanCity("/Users/akiyama/Desktop/github/programming/EvolutionalyComputation/tsp/eil51.tsp");
-	ga.initCity(point);
+	ga.initCity("/Users/akiyama/Desktop/github/programming/EvolutionalyComputation/tsp/eil51.tsp");
 	ga.printCity();
     }
     
