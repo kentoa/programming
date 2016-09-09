@@ -24,26 +24,30 @@ public class GA {
 	    InputStreamReader isr = new InputStreamReader(fis);
 	    BufferedReader br = new BufferedReader(isr);
 	    String line;
-	    ArrayList<String[]> point = new ArrayList<>(); // (x, y)
+	    ArrayList<String[]> point = new ArrayList<>(); // (x, y, ...)
 	    
 	    int row = 0;
-	    while((line = br.readLine()) != null && row++ > 5){
-		String[] tmp = line.split(",");
-		point.add(tmp);
+	    while((line = br.readLine()) != null){
+		
+		if(line.equals("EOF")) break;
+		
+		if(5 < row){
+		    String[] tmp = line.split(" ");
+		    point.add(tmp);
+		}
+		row++;
 	    }
 
 	    setCityNum(point);
 	    System.out.println(cityNum);
 	    setDim(point);
-	    city = new double[cityNum][dim + 1];	    
+	    city = new double[cityNum][dim + 1];    
 
-
-	    	    
 	    for(int i = 0; i < cityNum; i++){
 		for(int j = 0; j < dim + 1; j++){
-		    city[i][j] = Double.valueOf(point.get(i)[j]); // (citynum, x, y, ...)
+		    city[i][j] = Double.parseDouble(point.get(i)[j]); // (citynum, x, y, ...)
 		}
-	    }  
+	    }
 	}catch(Exception e){
 	    System.out.println("can't open the file");
 	    System.exit(1);
@@ -52,11 +56,12 @@ public class GA {
 
     void setCityNum(ArrayList<String[]> point){
 	this.cityNum = point.size();
+	System.out.println("number of city : " + this.cityNum);
     }
 
     void setDim(ArrayList<String[]> point){
-	System.out.println("len: " + point.get(0));
 	this.dim = point.get(0).length - 1;
+	System.out.println("number of dimension : " + this.dim);
     }
     
     /*
@@ -77,7 +82,7 @@ public class GA {
     
     void printCity(){
 	for(int i = 0; i < cityNum; i++){
-	    for(int j = 0; j < dim + 1; dim++){
+	    for(int j = 0; j < dim + 1; j++){
 		System.out.print(city[i][j] + " ");
 	    }
 	    System.out.println();
@@ -86,7 +91,7 @@ public class GA {
     
     public static void main(String[] args){
 	GA ga = new GA();
-	ga.initCity("/Users/akiyama/Desktop/github/programming/EvolutionalyComputation/tsp/eil51.tsp");
+	ga.initCity(args[0]);
 	ga.printCity();
     }
     
