@@ -3,17 +3,17 @@ import java.math.BigInteger;
 public class PaillierPubKey {
     private BigInteger n;
     private BigInteger g;
-    private BigInteger square_n;
+    private BigInteger squareN;
 
-    PaillierPubKey(BigInteger n){
-	this.n = n;
-	this.g = n.add(BigInteger.ONE);
-	this.square_n = n.multiply(n);
+    PaillierPubKey(PaillierSecKey sk){
+	this.n = sk.getN();
+	this.g = sk.getG();
+	this.square_n = sk.getSquareN();
     }
     
     BigInteger encrypt(BigInteger m){
-	BigInteger c = (g.modPow(m, square_n)).multiply(r.modPow(n));
-	c = c.mod(square_n);
+	BigInteger c = (g.modPow(m, squareN)).multiply(r.modPow(n));
+	c = c.mod(squareN);
 	
 	return c;
     }
@@ -27,7 +27,7 @@ public class PaillierPubKey {
     }
 
     BigInteger getSquareN(){
-	return square_n;
+	return squareN;
     }
     
 }
