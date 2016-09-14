@@ -13,9 +13,22 @@ public class PaillierSecKey {
 
     PaillierSecKey(int bit){
 	keyGen(bit);
-	this.lambda = lcm(p.subtact(BigInteger.ONE), q.subtract(BigInteger.ONE));
+	this.lambda = lcm(p.subtract(BigInteger.ONE), q.subtract(BigInteger.ONE));
 	this.n = p.multiply(q);
 	this.squareN = n.multiply(n);
+	this.g = n.add(BigInteger.ONE);
+    }
+
+    BigInteger getN(){
+	return n;
+    }
+
+    BigInteger getSquareN(){
+	return squareN;
+    }
+
+    BigInteger getG(){
+	return g;
     }
 
     void keyGen(int bit){
