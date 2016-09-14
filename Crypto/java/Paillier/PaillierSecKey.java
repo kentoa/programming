@@ -52,6 +52,10 @@ public class PaillierSecKey {
 	m = fc.multiply(fg.modInverse(n));
 	m = m.mod(n);
 
+	if(m.multiply(new BigInteger("2")).compareTo(n) == 1){ // if n/2 < m, m= m - n
+	    m = m.subtract(n);
+	}
+
 	return m;
     }    
 
