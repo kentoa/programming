@@ -11,7 +11,7 @@ public class PaillierPubKey {
 	this.squareN = sk.getSquareN();
     }
     
-    BigInteger encrypt(BigInteger m){
+    BigInteger Encrypt(BigInteger m, BigInteger r){
 	BigInteger c = (g.modPow(m, squareN)).multiply(r.modPow(n));
 	c = c.mod(squareN);
 	
