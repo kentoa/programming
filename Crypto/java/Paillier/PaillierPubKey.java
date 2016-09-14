@@ -8,7 +8,7 @@ public class PaillierPubKey {
     PaillierPubKey(PaillierSecKey sk){
 	this.n = sk.getN();
 	this.g = sk.getG();
-	this.square_n = sk.getSquareN();
+	this.squareN = sk.getSquareN();
     }
     
     BigInteger encrypt(BigInteger m){
