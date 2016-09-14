@@ -12,7 +12,7 @@ public class PaillierPubKey {
     }
     
     BigInteger Encrypt(BigInteger m, BigInteger r){
-	BigInteger c = (g.modPow(m, squareN)).multiply(r.modPow(n));
+	BigInteger c = (g.modPow(m, squareN)).multiply(r.modPow(n, squareN));
 	c = c.mod(squareN);
 	
 	return c;
