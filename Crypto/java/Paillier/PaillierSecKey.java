@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class PaillierSecKey {
@@ -32,8 +33,7 @@ public class PaillierSecKey {
     }
 
     void keyGen(int bit){
-	long seed = 149L;
-	Random rnd = new Random(seed);
+	Random rnd = new SecureRandom();
 	
 	this.p = BigInteger.probablePrime(bit, rnd);
 	this.q = BigInteger.probablePrime(bit, rnd);
